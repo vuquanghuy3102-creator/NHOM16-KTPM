@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Hotel Detail</title>
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+
+<nav class="navbar">
+<a class="brand" href="/" data-i18n="brand">Pangu</a>
+<div class="nav-links">
+<a href="/" data-i18n="nav_hotels">Khách sạn</a>
+<a href="/bookings.html" data-auth-only class="hidden" data-i18n="nav_bookings">Đơn đặt phòng</a>
+<a href="/profile.html" data-auth-only class="hidden" data-i18n="nav_profile">Thông tin cá nhân</a>
+<a href="/admin.html" data-admin-only class="hidden" data-i18n="nav_admin">Quản trị</a>
+<a href="/login.html" data-guest-only data-i18n="nav_login">Đăng nhập</a>
+<a href="/register.html" data-guest-only data-i18n="nav_register">Đăng ký</a>
+<button class="link-button hidden" data-auth-only onclick="logout()" data-i18n="nav_logout">Đăng xuất</button>
+<button id="languageToggle" class="btn language-toggle" type="button" onclick="toggleLanguage()">EN</button>
+</div></nav>
+
+<main class="container">
+  <section id="hotelDetail"></section>
+
+  <div class="section-title">
+    <div>
+      <h2>Check room availability</h2>
+      <div class="muted">Select dates and number of guests.</div>
+    </div>
+  </div>
+
+  <form id="roomSearchForm" class="card card-body">
+    <div class="grid grid-3">
+      <div>
+        <label for="checkIn">Check-in</label>
+        <input id="checkIn" name="checkIn" type="date" required>
+      </div>
+      <div>
+        <label for="checkOut">Check-out</label>
+        <input id="checkOut" name="checkOut" type="date" required>
+      </div>
+      <div>
+        <label for="guests">Guests</label>
+        <input id="guests" name="guests" type="number" min="1" value="1" required>
+      </div>
+    </div>
+    <button class="btn btn-primary" type="submit" style="margin-top:14px">Check available rooms</button>
+  </form>
+
+  <div class="section-title"><h2>Rooms</h2></div>
+  <section id="roomList"></section>
+</main>
+
+<footer data-i18n="footer">Pangu Hotel Booking · Bài tập lớn Kiểm thử phần mềm</footer>
+
+<script src="/js/common.js"></script>
+<script src="/js/hotel.js"></script>
+</body>
+</html>

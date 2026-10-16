@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Register - Hotel Booking</title>
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+
+<nav class="navbar">
+<a class="brand" href="/" data-i18n="brand">Pangu</a>
+<div class="nav-links">
+<a href="/" data-i18n="nav_hotels">Khách sạn</a>
+<a href="/bookings.html" data-auth-only class="hidden" data-i18n="nav_bookings">Đơn đặt phòng</a>
+<a href="/profile.html" data-auth-only class="hidden" data-i18n="nav_profile">Thông tin cá nhân</a>
+<a href="/admin.html" data-admin-only class="hidden" data-i18n="nav_admin">Quản trị</a>
+<a href="/login.html" data-guest-only data-i18n="nav_login">Đăng nhập</a>
+<a href="/register.html" data-guest-only data-i18n="nav_register">Đăng ký</a>
+<button class="link-button hidden" data-auth-only onclick="logout()" data-i18n="nav_logout">Đăng xuất</button>
+<button id="languageToggle" class="btn language-toggle" type="button" onclick="toggleLanguage()">EN</button>
+</div></nav>
+
+<main class="auth-wrap">
+  <form id="registerForm" class="auth-card">
+    <h1 data-i18n="register_title">Đăng ký tài khoản</h1>
+    <div id="formMessage" class="message"></div>
+    <div class="form-group">
+      <label for="fullName" data-i18n="full_name">Họ và tên</label>
+      <input id="fullName" name="fullName" required>
+    </div>
+    <div class="form-group">
+      <label for="phone" data-i18n="phone">Số điện thoại</label>
+      <input id="phone" name="phone" pattern="[0-9]{9,11}">
+    </div>
+    <div class="form-group">
+      <label for="email" data-i18n="email">Email</label>
+      <input id="email" name="email" type="email" required>
+    </div>
+    <div class="form-group">
+      <label for="password" data-i18n="password">Mật khẩu</label>
+      <input id="password" name="password" type="password" minlength="6" required>
+    </div>
+    <div class="form-group">
+      <label for="confirmPassword" data-i18n="confirm_password">Nhập lại mật khẩu</label>
+      <input id="confirmPassword" name="confirmPassword" type="password" minlength="6" required>
+    </div>
+    <button class="btn btn-primary" type="submit">Đăng ký</button>
+  </form>
+</main>
+<script src="/js/common.js"></script>
+<script src="/js/auth.js"></script>
+</body>
+</html>

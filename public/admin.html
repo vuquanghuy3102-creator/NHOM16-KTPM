@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Admin Dashboard</title>
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+
+<nav class="navbar">
+<a class="brand" href="/" data-i18n="brand">Pangu</a>
+<div class="nav-links">
+<a href="/" data-i18n="nav_hotels">Khách sạn</a>
+<a href="/bookings.html" data-auth-only class="hidden" data-i18n="nav_bookings">Đơn đặt phòng</a>
+<a href="/profile.html" data-auth-only class="hidden" data-i18n="nav_profile">Thông tin cá nhân</a>
+<a href="/admin.html" data-admin-only class="hidden" data-i18n="nav_admin">Quản trị</a>
+<a href="/login.html" data-guest-only data-i18n="nav_login">Đăng nhập</a>
+<a href="/register.html" data-guest-only data-i18n="nav_register">Đăng ký</a>
+<button class="link-button hidden" data-auth-only onclick="logout()" data-i18n="nav_logout">Đăng xuất</button>
+<button id="languageToggle" class="btn language-toggle" type="button" onclick="toggleLanguage()">EN</button>
+</div></nav>
+
+<main class="container">
+  <div class="section-title">
+    <div>
+      <h1>Administrator Dashboard</h1>
+      <div class="muted">Manage hotels, rooms, customers and bookings.</div>
+    </div>
+  </div>
+
+  <section class="stats">
+    <div class="stat-card"><span>Hotels</span><strong id="countHotels">0</strong></div>
+    <div class="stat-card"><span>Rooms</span><strong id="countRooms">0</strong></div>
+    <div class="stat-card"><span>Customers</span><strong id="countCustomers">0</strong></div>
+    <div class="stat-card"><span>Bookings</span><strong id="countBookings">0</strong></div>
+  </section>
+
+  <div class="admin-tabs">
+    <button class="btn active" data-tab="hotels">Hotels</button>
+    <button class="btn btn-secondary" data-tab="rooms">Rooms</button>
+    <button class="btn btn-secondary" data-tab="customers">Customers</button>
+    <button class="btn btn-secondary" data-tab="bookings">Bookings</button>
+  </div>
+
+  <section id="hotelsSection" class="admin-section">
+    <h2>Hotel management</h2>
+    <form id="hotelForm" class="grid grid-3">
+      <div><label>Name</label><input name="name" required></div>
+      <div><label>City</label><input name="city" required></div>
+      <div><label>Address</label><input name="address" required></div>
+      <div><label>Star rating</label><input name="starRating" type="number" min="1" max="5" value="3" required></div>
+      <div><label>Image URL</label><input name="image"></div>
+      <div><label>Description</label><input name="description"></div>
+      <div><button class="btn btn-primary">Add hotel</button></div>
+    </form>
+    <div id="hotelMessage" class="message"></div>
+    <div class="table-wrap" style="margin-top:18px">
+      <table>
+        <thead><tr><th>ID</th><th>Name</th><th>City</th><th>Stars</th><th>Action</th></tr></thead>
+        <tbody id="hotelTableBody"></tbody>
+      </table>
+    </div>
+  </section>
+
+  <section id="roomsSection" class="admin-section hidden">
+    <h2>Room management</h2>
+    <form id="roomForm" class="grid grid-4">
+      <div><label>Hotel</label><select id="roomHotelId" name="hotelId" required></select></div>
+      <div><label>Room number</label><input name="roomNumber" required></div>
+      <div><label>Room type</label><input name="roomType" required></div>
+      <div><label>Price</label><input name="price" type="number" min="1" required></div>
+      <div><label>Capacity</label><input name="capacity" type="number" min="1" required></div>
+      <div><label>Status</label>
+        <select name="status">
+          <option>AVAILABLE</option><option>BOOKED</option><option>OCCUPIED</option><option>MAINTENANCE</option>
+        </select>
+      </div>
+      <div><label>Description</label><input name="description"></div>
+      <div><button class="btn btn-primary">Add room</button></div>
+    </form>
+    <div id="roomMessage" class="message"></div>
+    <div class="table-wrap" style="margin-top:18px">
+      <table>
+        <thead><tr><th>ID</th><th>Hotel</th><th>Room</th><th>Type</th><th>Price</th><th>Capacity</th><th>Status</th><th>Action</th></tr></thead>
+        <tbody id="roomTableBody"></tbody>
+      </table>
+    </div>
+  </section>
+
+  <section id="customersSection" class="admin-section hidden">
+    <h2>Customer management</h2>
+    <div class="table-wrap">
+      <table>
+        <thead><tr><th>ID</th><th>Name</th><th>Email</th><th>Phone</th><th>Address</th></tr></thead>
+        <tbody id="customerTableBody"></tbody>
+      </table>
+    </div>
+  </section>
+
+  <section id="bookingsSection" class="admin-section hidden">
+    <h2>Booking management</h2>
+    <div class="table-wrap">
+      <table>
+        <thead><tr><th>ID</th><th>Customer</th><th>Hotel</th><th>Room</th><th>Dates</th><th>Total</th><th>Status</th></tr></thead>
+        <tbody id="adminBookingTableBody"></tbody>
+      </table>
+    </div>
+  </section>
+</main>
+
+<footer data-i18n="footer">Pangu Hotel Booking · Bài tập lớn Kiểm thử phần mềm</footer>
+
+<script src="/js/common.js"></script>
+<script src="/js/admin.js"></script>
+</body>
+</html>

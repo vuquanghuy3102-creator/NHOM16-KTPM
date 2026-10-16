@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Profile</title>
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+
+<nav class="navbar">
+<a class="brand" href="/" data-i18n="brand">Pangu</a>
+<div class="nav-links">
+<a href="/" data-i18n="nav_hotels">Khách sạn</a>
+<a href="/bookings.html" data-auth-only class="hidden" data-i18n="nav_bookings">Đơn đặt phòng</a>
+<a href="/profile.html" data-auth-only class="hidden" data-i18n="nav_profile">Thông tin cá nhân</a>
+<a href="/admin.html" data-admin-only class="hidden" data-i18n="nav_admin">Quản trị</a>
+<a href="/login.html" data-guest-only data-i18n="nav_login">Đăng nhập</a>
+<a href="/register.html" data-guest-only data-i18n="nav_register">Đăng ký</a>
+<button class="link-button hidden" data-auth-only onclick="logout()" data-i18n="nav_logout">Đăng xuất</button>
+<button id="languageToggle" class="btn language-toggle" type="button" onclick="toggleLanguage()">EN</button>
+</div></nav>
+
+<main class="container">
+  <div class="grid grid-2">
+    <form id="profileForm" class="card card-body">
+      <h2>Personal information</h2>
+      <div id="profileMessage" class="message"></div>
+      <div class="form-group">
+        <label>Email</label>
+        <input id="email" disabled>
+      </div>
+      <div class="form-group">
+        <label>Full name</label>
+        <input id="fullName" name="fullName" required>
+      </div>
+      <div class="form-group">
+        <label>Phone</label>
+        <input id="phone" name="phone">
+      </div>
+      <div class="form-group">
+        <label>Address</label>
+        <input id="address" name="address">
+      </div>
+      <div class="form-group">
+        <label>Date of birth</label>
+        <input id="dateOfBirth" name="dateOfBirth" type="date">
+      </div>
+      <div class="form-group">
+        <label>Identity number</label>
+        <input id="identityNumber" name="identityNumber">
+      </div>
+      <button class="btn btn-primary">Update profile</button>
+    </form>
+
+    <form id="passwordForm" class="card card-body">
+      <h2>Change password</h2>
+      <div id="passwordMessage" class="message"></div>
+      <div class="form-group">
+        <label>Current password</label>
+        <input name="currentPassword" type="password" required>
+      </div>
+      <div class="form-group">
+        <label>New password</label>
+        <input name="newPassword" type="password" minlength="6" required>
+      </div>
+      <div class="form-group">
+        <label>Confirm new password</label>
+        <input name="confirmPassword" type="password" minlength="6" required>
+      </div>
+      <button class="btn btn-primary">Change password</button>
+    </form>
+  </div>
+</main>
+
+<footer data-i18n="footer">Pangu Hotel Booking · Bài tập lớn Kiểm thử phần mềm</footer>
+
+<script src="/js/common.js"></script>
+<script src="/js/profile.js"></script>
+</body>
+</html>
